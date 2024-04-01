@@ -9,6 +9,8 @@ services:
       - "25565:25565"
     environment:
       EULA: "TRUE"
+      # Uncoment to use PAPER Type
+      # TYPE=PAPER
     volumes:
       # attach the relative directory 'data' to the container's /data path
       - minecraft-vanilla:/data
