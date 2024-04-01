@@ -1,4 +1,5 @@
 # TEST OK
+# Documentation to manage your server : https://docker-minecraft-server.readthedocs.io/en/latest/
 services:
   mc:
     image: itzg/minecraft-server
