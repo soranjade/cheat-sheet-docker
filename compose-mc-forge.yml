@@ -14,6 +14,7 @@ services:
       TYPE: "AUTO_CURSEFORGE"
       # Tu mets le modpack que tu veux avec l'url du modpack (skyfactory dans l'exemple)
       CF_PAGE_URL: "https://www.curseforge.com/minecraft/modpacks/skyfactory-4"
+      # Il faut creer une clé API sur curseforge (ne pas oublier de DOUBLER les '$' ex : deujj465$$fe7$$)
       CF_API_KEY: "APIKEYCURSEFOR : https://console.curseforge.com/#/api-keys"
       # La premiere itération va crasher parce que il faut modifier la ligne dans server.properties
       # generator-settings={"Topography-Preset"\:"Sky Factory 4"}
