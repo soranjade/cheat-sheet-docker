@@ -1,0 +1,25 @@
+# TEST OK
+# Documentation to manage your server : https://docker-minecraft-server.readthedocs.io/en/latest/
+services:
+  mc:
+    # Il faut faire coincider la version de java minecraft avec le modpack
+    image: itzg/minecraft-server:java8-multiarch
+    tty: true
+    stdin_open: true
+    ports:
+      - "25565:25565"
+    environment:
+      EULA: "TRUE"
+      # Obligatoire si tu utilise curseforge comme source de modpack
+      TYPE: "AUTO_CURSEFORGE"
+      # Tu mets le modpack que tu veux avec l'url du modpack (skyfactory dans l'exemple)
+      CF_PAGE_URL: "https://www.curseforge.com/minecraft/modpacks/skyfactory-4"
+      CF_API_KEY: "APIKEYCURSEFOR : https://console.curseforge.com/#/api-keys"
+      # La premiere itération va crasher parce que il faut modifier la ligne dans server.properties
+      #GENERATOR_SEETINGS: '{"Topography-Preset":"Sky Factory 4"}'
+    volumes:
+      # attach the relative directory 'data' to the container's /data path
+      - minecraft-sky4:/data
+
+volumes:
+  minecraft-sky4:
