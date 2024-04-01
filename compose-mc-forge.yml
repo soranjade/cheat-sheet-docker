@@ -16,7 +16,7 @@ services:
       CF_PAGE_URL: "https://www.curseforge.com/minecraft/modpacks/skyfactory-4"
       CF_API_KEY: "APIKEYCURSEFOR : https://console.curseforge.com/#/api-keys"
       # La premiere itération va crasher parce que il faut modifier la ligne dans server.properties
-      #GENERATOR_SEETINGS: '{"Topography-Preset":"Sky Factory 4"}'
+      # generator-settings={"Topography-Preset"\:"Sky Factory 4"}
     volumes:
       # attach the relative directory 'data' to the container's /data path
       - minecraft-sky4:/data
