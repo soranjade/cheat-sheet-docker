@@ -1,0 +1,19 @@
+services:
+  # bind mount example
+  
+  # volume example
+  linuxgsm-arma3-volume:
+    image: gameservermanagers/gameserver:arma3
+    # image: ghcr.io/gameservermanagers/gameserver:arma3
+    container_name: arma3server
+    restart: unless-stopped
+    volumes:
+      - linuxgsm-arma3:/data
+    ports:
+      - "2302-2306:2302-2306/udp"
+      - "2344:2344/tcp"
+      - "2344:2344/udp"
+      - "2345:2345/tcp"
+
+volumes:
+  linuxgsm-arma3:
