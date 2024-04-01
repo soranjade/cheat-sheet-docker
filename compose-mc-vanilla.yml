@@ -1,3 +1,4 @@
+# UNDER TESTING FOR NOW
 services:
   mc:
     image: itzg/minecraft-server
@@ -13,3 +14,5 @@ services:
 
 volumes:
   minecraft-vanilla
+
+
