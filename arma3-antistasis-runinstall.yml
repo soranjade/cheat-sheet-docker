@@ -1,10 +1,11 @@
 
 
 services:
-  # Settings files + add @antistasis mods
-
+  
   linuxsm-preconfig:
+  # Settings files + add @antistasis mods
   # this service is only for the first run to add serverfiles + set steamID to download the games + install @antistatis
+  # comment this service once you installed the server
     image: debian:latest
     volumes:
       - linuxgsm-arma3:/data
@@ -47,6 +48,7 @@ services:
       - "2344:2344/tcp"
       - "2344:2344/udp"
       - "2345:2345/tcp"
+    # comment depends_on once installed
     depends_on:
       - linuxsm-preconfig
 
