@@ -1,0 +1,54 @@
+
+
+services:
+  # Settings files + add @antistasis mods
+
+  linuxsm-preconfig:
+  # this service is only for the first run to add serverfiles + set steamID to download the games + install @antistatis
+    image: debian:latest
+    volumes:
+      - linuxgsm-arma3:/data
+    command:
+      - /bin/bash
+      - -c
+      - |
+        echo test
+        mkdir /data/config-lgsm/
+        mkdir /data/config-lgsm/arma3server/
+        mkdir /data/serverfiles/
+        mkdir /data/serverfiles/mods/
+        mkdir /data/serverfiles/keys/
+        echo steamuser=\"STEAMUSER\" >> /data/config-lgsm/arma3server/common.cfg
+        echo steampass=\"STEAMPWD\" >> /data/config-lgsm/arma3server/common.cfg
+        apt-get update
+        apt install -y unzip wget
+        wget https://github.com/igorkis-scrts/A3-Antistasi-Plus/releases/download/v2.3.2/A3A-Plus.zip
+        wget https://raw.githubusercontent.com/soranjade/cheat-sheet-docker/main/arma3server.server.cfg
+        unzip A3A-Plus.zip -d @antistasis
+        cp -r @antistasis/Keys/* data/serverfiles/keys/
+        mv @antistasis /data/serverfiles/mods/
+        mv arma3server.server.cfg /data/serverfiles/cfg/
+        mkdir /data/config-lgsm
+        mkdir /data/config-lgsm/arma3server/
+        echo mods=\"mods/@antistasis\" >> /data/config-lgsm/arma3server/arma3server.cfg
+        adduser --disabled-password --gecos "" linuxgsm
+        chown -R linuxgsm:linuxgsm /data/
+        
+  # Server run
+  linuxgsm-arma3-volume:
+    image: gameservermanagers/gameserver:arma3
+    # image: ghcr.io/gameservermanagers/gameserver:arma3
+    container_name: arma3server
+    restart: unless-stopped
+    volumes:
+      - linuxgsm-arma3:/data
+    ports:
+      - "2302-2306:2302-2306/udp"
+      - "2344:2344/tcp"
+      - "2344:2344/udp"
+      - "2345:2345/tcp"
+    depends_on:
+      - linuxsm-preconfig
+
+volumes:
+  linuxgsm-arma3:
