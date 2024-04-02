@@ -36,7 +36,7 @@ services:
         chown -R linuxgsm:linuxgsm /data/
         
   # Server run
-  linuxgsm-arma3-volume:
+  linuxgsm-arma3-server:
     image: gameservermanagers/gameserver:arma3
     # image: ghcr.io/gameservermanagers/gameserver:arma3
     container_name: arma3server
