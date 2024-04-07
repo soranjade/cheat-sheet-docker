@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+    ollama:
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: all
+                          capabilities:
+                              - gpu
+        volumes:
+            - ollama:/root/.ollama
+        ports:
+            - 11434:11434
+        container_name: ollama
+        image: ollama/ollama
+
+    open-webui:
+        ports:
+            - 3000:8080
+        extra_hosts:
+            - host.docker.internal:host-gateway
+        volumes:
+            - ollama-webui:/app/backend/data
+        container_name: open-webui
+        restart: always
+        image: ghcr.io/open-webui/open-webui:main
+        depends_on:
+        - ollama
+
+volumes:
+  ollama:
+    external: true
+  ollama-webui:
+    external: true
