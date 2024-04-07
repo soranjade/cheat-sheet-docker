@@ -32,6 +32,6 @@ services:
 
 volumes:
   ollama:
-    external: true
+    external: true # remove this if you don't have a volume yet
   ollama-webui:
-    external: true
+    external: true # remove this if you don't have a volume yet
