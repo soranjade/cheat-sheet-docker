@@ -1,7 +1,7 @@
 
 
 services:
-  
+  #
   linuxsm-preconfig:
   # Settings files + add @antistasis mods
   # this service is only for the first run to add serverfiles + set steamID to download the games + install @antistatis
