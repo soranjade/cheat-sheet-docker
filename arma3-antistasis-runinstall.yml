@@ -19,6 +19,7 @@ services:
         mkdir /data/serverfiles/
         mkdir /data/serverfiles/mods/
         mkdir /data/serverfiles/keys/
+        mkdir /data/serverfiles/cfg/
         echo steamuser=\"STEAMUSER\" >> /data/config-lgsm/arma3server/common.cfg
         echo steampass=\"STEAMPWD\" >> /data/config-lgsm/arma3server/common.cfg
         apt-get update
